@@ -1,0 +1,10 @@
+.vs
+.vscode
+application/app/bin/
+application/app/obj/
+core/domain/bin/
+core/domain/obj/
+infrastructure/api/bin/
+infrastructure/data/bin/
+infrastructure/api/obj/
+infrastructure/data/obj/
