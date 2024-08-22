@@ -12,7 +12,7 @@ Este proyecto es una API para una red social, construida con ASP.NET Core y MySQ
 ## Configuración
 
 1. **Configurar la conexión a la base de datos**:
-   - Abre el archivo `infrastructure/data/Contextos/SocialNetworkContext.cs`.
+   - Abre el archivo `infrastructure/api/appsettings.json`.
    - Configura la cadena de conexión para que apunte a tu instancia de MySQL.
 
 2. **Crear la base de datos**:
@@ -51,7 +51,7 @@ Este proyecto es una API para una red social, construida con ASP.NET Core y MySQ
   - **Respuesta**: `200 OK` con los detalles de la publicación creada.
 
 - **Obtener todas las publicaciones**
-  - **`GET /api/post`**
+  - **`GET /api/post/getallpost`**
   - **Descripción**: Obtiene todas las publicaciones.
   - **Respuesta**: `200 OK` con una lista de publicaciones.
 
@@ -68,7 +68,7 @@ Este proyecto es una API para una red social, construida con ASP.NET Core y MySQ
 ### Usuarios
 
 - **Obtener un usuario por nombre de usuario**
-  - **`GET /api/user/{username}`**
+  - **`GET /api/user/GetUser/{username}`**
   - **Descripción**: Obtiene un usuario específico por su nombre de usuario.
   - **Respuesta**: `200 OK` con el objeto de usuario.
 
@@ -129,5 +129,5 @@ Este proyecto está licenciado bajo la [MIT License](LICENSE).
 
 ## Contacto
 
-Para cualquier consulta o comentario, puedes contactarnos a través del [correo electrónico](mailto:example@example.com).
+Para cualquier consulta o comentario, puedes contactarnos a través del [correo electrónico](mailto:andresmg0709@gmail.com).
 

@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using core.domain.Entities;
 using core.domain.Interfaces.Repositories;
-using infrastructure.data.Contexts;
 using System.Collections.Generic;
 using System.Linq;
 

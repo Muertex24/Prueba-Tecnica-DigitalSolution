@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data", "..\..\infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataDynamo", "..\..\infrastructure\dataDynamoDB\dataDynamo.csproj", "{E713F266-B030-4155-96CF-941057CA76DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "..\..\TestProject\TestProject.csproj", "{2DD9BF05-F168-4A26-AD5A-A61EC49629EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{E713F266-B030-4155-96CF-941057CA76DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E713F266-B030-4155-96CF-941057CA76DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E713F266-B030-4155-96CF-941057CA76DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DD9BF05-F168-4A26-AD5A-A61EC49629EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD9BF05-F168-4A26-AD5A-A61EC49629EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD9BF05-F168-4A26-AD5A-A61EC49629EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD9BF05-F168-4A26-AD5A-A61EC49629EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

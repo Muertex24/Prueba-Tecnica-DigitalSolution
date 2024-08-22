@@ -1,6 +1,5 @@
 using core.domain.Entities;
 using core.domain.Interfaces;
-using infrastructure.data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;

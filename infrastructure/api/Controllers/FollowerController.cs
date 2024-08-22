@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using core.domain.Entities;
 using application.app.Services;
-using infrastructure.data.Contexts;
-using infrastructure.data.Repositories;
 using System;
 using System.Threading.Tasks;
 
@@ -13,72 +10,66 @@ namespace infrastructure.API.Controllers
     [ApiController]
     public class FollowerController : ControllerBase
     {
-        private FollowerService CreateFollowerService()
+        private readonly FollowerService _followerService;
+
+        public FollowerController(FollowerService followerService)
         {
-            var dbContext = new SocialNetworkContext();
-            var followerRepository = new FollowerRepository(dbContext);
-            var userRepository = new UserRepository(dbContext);
-            var followerService = new FollowerService(followerRepository, userRepository);
-            return followerService;
+            _followerService = followerService;
         }
 
         [HttpPost("follow")]
         public async Task<IActionResult> Follow([FromBody] Follower follower)
         {
-            var service = CreateFollowerService();
             try
             {
-                await service.FollowAsync(follower);
-                return Ok("Seguido exitosamente.");
+                await _followerService.FollowAsync(follower);
+                return Ok("Seguido exitosamente. ✔️");
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error: {ex.Message}");
+                return BadRequest($"Error: {ex.Message} ❌");
             }
         }
 
         [HttpPost("unfollow")]
         public async Task<IActionResult> Unfollow([FromBody] Follower follower)
         {
-            var service = CreateFollowerService();
             try
             {
-                await service.UnfollowAsync(follower);
-                return Ok("Dejado de seguir exitosamente.");
+                await _followerService.UnfollowAsync(follower);
+                return Ok("Dejado de seguir exitosamente. ✔️");
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error: {ex.Message}");
+                return BadRequest($"Error: {ex.Message} ❌");
             }
         }
 
         [HttpGet("followers/{username}")]
         public async Task<IActionResult> GetFollowersAsync(string username)
         {
-            var service = CreateFollowerService();
             try
             {
-                var followers = await service.GetFollowersAsync(username);
+                var followers = await _followerService.GetFollowersAsync(username);
                 return Ok(followers);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error: {ex.Message}");
+                return BadRequest($"Error: {ex.Message} ❌");
             }
         }
 
         [HttpGet("followed/{username}")]
         public async Task<IActionResult> GetFollowedUsersAsync(string username)
         {
-            var service = CreateFollowerService();
             try
             {
-                var followedUsers = await service.GetFollowedUsersAsync(username);
+                var followedUsers = await _followerService.GetFollowedUsersAsync(username);
                 return Ok(followedUsers);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error: {ex.Message}");
+                return BadRequest($"Error: {ex.Message} ❌");
             }
         }
     }

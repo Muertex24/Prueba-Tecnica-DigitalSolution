@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using core.domain.Entities;
 using core.domain.Interfaces.Repositories;
-using infrastructure.data.Contexts;
 
 namespace infrastructure.data.Repositories
 {

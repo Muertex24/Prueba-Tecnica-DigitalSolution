@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using core.domain.Entities;
 using application.app.Services;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using infrastructure.data.Contexts;
-using infrastructure.data.Repositories;
-using System;
 
 namespace infrastructure.API.Controllers
 {
@@ -13,38 +9,34 @@ namespace infrastructure.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private UserService CreateService()
-        {
-            var dbContext = new SocialNetworkContext();
-            var userRepository = new UserRepository(dbContext);
-            var userService = new UserService(userRepository);
+        private readonly UserService _userService;
 
-            return userService;
+        public UserController(UserService userService)
+        {
+            _userService = userService;
         }
 
-        [HttpGet("{username}")]
+        [HttpGet("GetUser/{username}")]
         public async Task<ActionResult<User>> GetUser(string username)
         {
-            var service = CreateService();
-            var user = await service.GetUserByUsernameAsync(username);
+            var user = await _userService.GetUserByUsernameAsync(username);
             if (user == null)
             {
-                return NotFound("El usuario no existe.");
+                return NotFound("El usuario no existe. ❌");
             }
             return Ok(user);
         }
 
-        [HttpPost]
+        [HttpPost("UserCreator")]
         public async Task<IActionResult> CreateUser([FromBody] User user)
         {
-            var service = CreateService();
-            var userExists = await service.UserExistsAsync(user.Username);
+            var userExists = await _userService.UserExistsAsync(user.Username);
             if (userExists)
             {
-                return Conflict("El usuario ya existe.");
+                return Conflict("El usuario ya existe. ❌");
             }
 
-            await service.CreateUserAsync(user);
+            await _userService.CreateUserAsync(user);
             return CreatedAtAction(nameof(GetUser), new { username = user.Username }, user);
         }
     }
